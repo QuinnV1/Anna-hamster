@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Philosopher", sans-serif;
+    background-color: #000000;
+    height: 100%;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slider-container {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.stars-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Изменено */
+}
+
+.star {
+    position: absolute;
+    width: 4px; /* Увеличен размер */
+    height: 4px; /* Увеличен размер */
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: fall 5s linear infinite; /* Уменьшен интервал анимации */
+    box-shadow: 0 0 5px 1px white; /* Увеличена яркость */
+}
+
+@keyframes fall {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 67% 50%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2; /* Изменено */
+}
+
+.text {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    z-index: 3; /* Изменено */
+}
+
+.slide:nth-child(1) .text {
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slide:nth-child(2) .text {
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slide:nth-child(3) .text {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 4; /* Изменено */
+}
+
+.slider-nav button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 5px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slider-nav button.active {
+    background-color: white;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slider-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: white;
+    transition: width 0.05s linear;
+    z-index: 4; /* Изменено */
+}
+
+.section {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.section h1 {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 60px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.content img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin: 20px;
+    border-radius: 50%;
+    pointer-events: none
+}
+
+.content:nth-child(2) img {
+    object-fit: cover;
+    object-position: 28% 30%;
+}
+
+.content p {
+    width: 80%;
+    max-width: 600px;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .slide:nth-child(1) img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 20% 18%;
+    }
+    
+    .slide:nth-child(2) img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 20% 49%;
+    }
+    
+    .slide:nth-child(3) img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 20% 25%;
+    }
+
+    .slide:nth-child(3) .text {
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .section:nth-child(3) .content {
+        flex-direction: row-reverse;
+    }
+
+    .section:nth-child(2) .content img {
+        margin-left: 20px;
+    }
+
+    .section:nth-child(2) .content p {
+        text-align: right;
+    }
+}
